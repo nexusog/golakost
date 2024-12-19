@@ -1,15 +1,5 @@
-# Paket
+# Gola Kost
 
-Template Repository for NPM Package
+Meaning _*Bare Bone*_ in Croatian. It is a collection of utilities and schemas for building Elysia backends. This library is meant to be used internally.
 
-# Roadmap
-
-- [x] tsup
-- [x] prettier
-- [x] eslint
-- [x] husky
-    - [x] commitlint
-    - [x] prettier for staged files
-- [x] github workflow
-- [x] vitest
-- [x] changesets
+The library is meant to have consistent schemas and logic for all backends.
