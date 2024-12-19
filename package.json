@@ -1,0 +1,41 @@
+{
+	"private": true,
+	"name": "@nexusog/paket",
+	"version": "0.0.1",
+	"description": "Template Package",
+	"type": "module",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"format": "prettier --write .",
+		"build": "tsup",
+		"lint": "eslint .",
+		"test": "vitest --no-watch",
+		"test:watch": "vitest --watch",
+		"cs:bump": "pnpm changeset",
+		"cs:version": "pnpm changeset version",
+		"cs:version:snapshot": "pnpm changeset version --snapshot next",
+		"cs:publish": "pnpm run build && changeset publish",
+		"cs:publish:snapshot": "pnpm run build && changeset publish --tag next",
+		"prepare": "husky"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@changesets/cli": "^2.27.11",
+		"@commitlint/cli": "^19.6.1",
+		"@commitlint/config-conventional": "^19.6.0",
+		"@eslint/js": "^9.17.0",
+		"eslint": "^9.17.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.2.11",
+		"prettier": "^3.4.2",
+		"tsup": "^8.3.5",
+		"typescript": "^5.7.2",
+		"typescript-eslint": "^8.18.1",
+		"vite-tsconfig-paths": "^5.1.4",
+		"vitest": "^2.1.8"
+	}
+}
