@@ -1,5 +1,11 @@
 # @nexusog/golakost
 
+## 0.1.1
+
+### Patch Changes
+
+- 21ec10f: Fix Response schema compositing
+
 ## 0.1.0
 
 ### Minor Changes
