@@ -41,5 +41,13 @@
 	},
 	"dependencies": {
 		"elysia": "^1.1.26"
+	},
+	"homepage": "https://github.com/nexusog/golakost#README",
+	"bugs": {
+		"url": "https://github.com/nexusog/golakost/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/nexusog/golakost.git"
 	}
 }
