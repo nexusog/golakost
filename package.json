@@ -1,5 +1,5 @@
 {
-	"private": true,
+	"private": false,
 	"name": "@nexusog/golakost",
 	"version": "0.1.0",
 	"description": "Bare bone library for building Elysia backend",
