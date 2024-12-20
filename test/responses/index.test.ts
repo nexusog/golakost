@@ -2,11 +2,6 @@ import { Responses } from '@/index'
 import { describe, expect, it, suite } from 'vitest'
 import { Value } from '@sinclair/typebox/value'
 import { t } from 'elysia'
-import {
-	ConstructErrorResponseSchema,
-	ConstructResponseSchema,
-	ConstructSuccessResponseSchema,
-} from '@/responses'
 
 suite('Responses', () => {
 	it('should be defined', () => {
@@ -90,7 +85,7 @@ suite('Responses', () => {
 			name: t.String(),
 		})
 
-		const constructedSchema = ConstructResponseSchema(dataSchema)
+		const constructedSchema = Responses.ConstructResponseSchema(dataSchema)
 
 		it('should pass valid schema', () => {
 			expect(() =>
@@ -129,7 +124,8 @@ suite('Responses', () => {
 			name: t.String(),
 		})
 
-		const constructedSchema = ConstructSuccessResponseSchema(dataSchema)
+		const constructedSchema =
+			Responses.ConstructSuccessResponseSchema(dataSchema)
 
 		it('should pass valid schema', () => {
 			expect(() =>
@@ -180,7 +176,8 @@ suite('Responses', () => {
 			name: t.String(),
 		})
 
-		const constructedSchema = ConstructErrorResponseSchema(dataSchema)
+		const constructedSchema =
+			Responses.ConstructErrorResponseSchema(dataSchema)
 
 		it('should pass valid schema', () => {
 			expect(() =>
