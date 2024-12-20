@@ -5,15 +5,12 @@ export const ResponseSchema = t.Object({
 	message: t.String(),
 })
 
-export const SuccessResponseSchema = t.Composite([
-	ResponseSchema,
-	t.Object({
-		error: t.Literal(false),
-	}),
-])
-export const ErrorResponseSchema = t.Composite([
-	ResponseSchema,
-	t.Object({
-		error: t.Literal(true),
-	}),
-])
+export const SuccessResponseSchema = t.Object({
+	...ResponseSchema.properties,
+	error: t.Literal(false),
+})
+
+export const ErrorResponseSchema = t.Object({
+	...ResponseSchema.properties,
+	error: t.Literal(true),
+})

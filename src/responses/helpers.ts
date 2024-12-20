@@ -1,25 +1,21 @@
 import { t, TSchema } from 'elysia'
-import { ResponseSchema } from './schema'
+import {
+	ErrorResponseSchema,
+	ResponseSchema,
+	SuccessResponseSchema,
+} from './schema'
 
 type TObjectOptions = Partial<Parameters<typeof t.Object>[1]>
 
-export function ConstructResponseSchema<T extends TSchema, E extends boolean>(
+export function ConstructResponseSchema<T extends TSchema>(
 	data: T,
-	error?: E,
 	options: TObjectOptions = {},
 ) {
-	return t.Composite(
-		[
-			ResponseSchema,
-			typeof error === 'boolean'
-				? t.Object({
-						error: t.Literal(error),
-					})
-				: t.Object({}),
-			t.Object({
-				data,
-			}),
-		],
+	return t.Object(
+		{
+			...ResponseSchema.properties,
+			data,
+		},
 		{
 			readOnly: true,
 			...options,
@@ -31,12 +27,30 @@ export function ConstructSuccessResponseSchema<T extends TSchema>(
 	data: T,
 	options: TObjectOptions = {},
 ) {
-	return ConstructResponseSchema(data, false, options)
+	return t.Object(
+		{
+			...SuccessResponseSchema.properties,
+			data,
+		},
+		{
+			readOnly: true,
+			...options,
+		},
+	)
 }
 
 export function ConstructErrorResponseSchema<T extends TSchema>(
 	data: T,
 	options: TObjectOptions = {},
 ) {
-	return ConstructResponseSchema(data, true, options)
+	return t.Object(
+		{
+			...ErrorResponseSchema.properties,
+			data,
+		},
+		{
+			readOnly: true,
+			...options,
+		},
+	)
 }
