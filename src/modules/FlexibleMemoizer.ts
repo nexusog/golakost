@@ -2,10 +2,12 @@ export type CacheKeyType = string | number | symbol
 
 export type CacheLike = object
 
+type MaybePromise<T> = T | Promise<T>
+
 export interface CacheOperations<C, T, K extends CacheKeyType> {
-	get(cache: C, key: K): T | undefined
-	set(cache: C, key: K, value: T): void
-	remove?(cache: C, key: K): void
+	get(cache: C, key: K): MaybePromise<T | undefined>
+	set(cache: C, key: K, value: T): MaybePromise<unknown>
+	remove?(cache: C, key: K): MaybePromise<unknown>
 }
 
 export class FlexibleMemoizer<C, T, K extends CacheKeyType = string> {
@@ -17,28 +19,18 @@ export class FlexibleMemoizer<C, T, K extends CacheKeyType = string> {
 		this.operations = operations
 	}
 
-	public memoize(key: K, fn: () => T): T
-	public memoize(key: K, fn: () => Promise<T>): Promise<T>
-	public memoize(key: K, fn: () => T | Promise<T>): T | Promise<T> {
-		const cached = this.operations.get(this.cache, key)
+	public async memoize(key: K, fn: () => T | Promise<T>): Promise<T> {
+		const cached = await this.operations.get(this.cache, key)
 
 		if (cached !== undefined) {
-			return cached
+			return Promise.resolve(cached)
 		}
 
-		const result = fn()
+		const result = await fn()
 
-		// if the callback is promise, return a promise
-		if (typeof result === 'object' && 'then' in result!) {
-			return new Promise((resolve) => {
-				result.then((value) => {
-					this.operations.set(this.cache, key, value)
-					return resolve(result)
-				})
-			})
-		}
-		this.operations.set(this.cache, key, result)
-		return result
+		await this.operations.set(this.cache, key, result)
+
+		return Promise.resolve(result)
 	}
 
 	public remove(key: K) {
