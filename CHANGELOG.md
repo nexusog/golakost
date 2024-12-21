@@ -1,5 +1,11 @@
 # @nexusog/golakost
 
+## 0.3.0
+
+### Minor Changes
+
+- d9780b7: Refactor `FlexibleMemoizer` to use ASYNC API
+
 ## 0.2.0
 
 ### Minor Changes
