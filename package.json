@@ -42,6 +42,13 @@
 	"dependencies": {
 		"elysia": "^1.1.26"
 	},
+	"files": [
+		"dist",
+		"src",
+		"package.json",
+		"LICENSE",
+		"README.md"
+	],
 	"homepage": "https://github.com/nexusog/golakost#README",
 	"bugs": {
 		"url": "https://github.com/nexusog/golakost/issues"
