@@ -1,5 +1,11 @@
 # @nexusog/golakost
 
+## 0.2.0
+
+### Minor Changes
+
+- bae27bd: Implement `globalize` module
+
 ## 0.1.1
 
 ### Patch Changes
