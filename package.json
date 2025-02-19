@@ -1,7 +1,7 @@
 {
 	"private": false,
 	"name": "@nexusog/golakost",
-	"version": "0.3.0",
+	"version": "0.3.1",
 	"description": "Bare bone library for building Elysia backend",
 	"type": "module",
 	"main": "dist/index.js",

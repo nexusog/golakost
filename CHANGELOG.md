@@ -1,5 +1,11 @@
 # @nexusog/golakost
 
+## 0.3.1
+
+### Patch Changes
+
+- d65ac82: Bump Elysia
+
 ## 0.3.0
 
 ### Minor Changes
